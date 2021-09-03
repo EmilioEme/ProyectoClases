@@ -11,6 +11,19 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'producto',
+    children : [
+      {
+        path : "",
+        loadChildren : () => import('./producto/producto.module').then(m => m.ProductoPageModule)
+      },
+      {
+        path : ":prodID",
+        loadChildren : () => import('./producto/detalle-producto/detalle-producto.module').then(m => m.DetalleProductoPageModule)
+      }
+    ]
+  },
 ];
 
 @NgModule({
